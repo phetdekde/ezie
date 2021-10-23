@@ -10,16 +10,19 @@
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
     <nav class="menu navbar navbar-expand-md navbar-light">
-      <a class="navbar-brand" href="index.html"><b>EZIE</b></a>
+      <a class="navbar-brand" href="account.html"><b>EZIE</b></a>
       <div class="navbar-collapse collapse justify-content-end">
         <div>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Accounts</a>
+              <a id="login_button" class="nav-link">SIGN IN WITH METAMASK</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="account.html">Accounts</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="garden.html">Garden</a>
@@ -27,25 +30,34 @@
             <li class="nav-item">
               <a class="nav-link" href="activity.html">Activity</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="marketplace.html">Marketplace</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div>
-      <h1>ACCOUNT</h1>
-      <h3 id="total_plants">You currently have 0 plants!</h3>
-      <a class="nav-link" href="garden.html">
-        <h6>VIEW FULL GARDEN</h6>
-      </a>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>ACCOUNT</h1>
+          <h3 id="total_plants">You currently have 0 plants!</h3>
+          <a class="nav-link" href="garden.html">
+            <h6>VIEW FULL GARDEN</h6>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h3>Activities</h3>
+          <ul class="list-group list-group-flush" id="activity_ul">
+          </ul>
+          <a class="nav-link" href="activity.html">
+            <h6>VIEW FULL ACTIVITIES</h6>
+          </a>
+        </div>
+      </div>   
     </div>
-    <div>
-      <h3>Activities</h3>
-      <ul class="list-group list-group-flush" id="activity_ul">
-      </ul>
-      <a class="nav-link" href="activity.html">
-        <h6>VIEW FULL ACTIVITIES</h6>
-      </a>
-    </div>
-    <script type="text/javascript" src="./main.js"></script>
+    <script type="module" src="../js/account.js"></script>
   </body>
 </html>

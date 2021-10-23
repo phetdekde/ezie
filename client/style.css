@@ -1,3 +1,7 @@
+#login_button:hover {
+    cursor: pointer;
+}
+
 .plant_img {
     width: 100%;
 }

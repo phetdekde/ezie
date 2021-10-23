@@ -106,3 +106,5 @@ dist
 contracts/.placeholder
 test/.placeholder
 build
+
+client/js/Token.json
