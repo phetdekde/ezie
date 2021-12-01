@@ -35,10 +35,10 @@ async function renderGame() {
     let contract = await getContract();
     let array = await contract.methods.getAllTokensForUser(ethereum.selectedAddress).call({from: ethereum.selectedAddress});
 
-    array.forEach(async (plantId) => {
-        let details = await contract.methods.getTokenDetails(plantId).call({from: ethereum.selectedAddress});
-        renderActivity(plantId, details);
-    });
+    for(let i=array.length-1 ; i>array.length-6 ; i--) {
+        let details = await contract.methods.getTokenDetails(array[i]).call({from: ethereum.selectedAddress});
+        renderActivity(array[i], details);
+    }
     renderAccount();
 }
  
