@@ -1,24 +1,33 @@
 Moralis.initialize("o113qwSsl3hbQrRwTQeAhG1Bydxf3jxq0xUONhzX"); // Application id from moralis.io
 Moralis.serverURL = "https://qexoyo0cyt3t.grandmoralis.com:2053/server"; //Server url from moralis.io
-import { getContract } from './index.js'
+import { getContract, interval } from './index.js'
 
 init();
 
 async function init() {
     try {
         let user = Moralis.User.current();
+        console.log(user)
         if(!user) {
+            $('#logout_button').hide();
             $('#login_button').click(async () => {
                 user = await Moralis.Web3.authenticate();
+                window.location.reload();
+            })
+        } else {
+            $('#logout_button').click(async () => {
+                await Moralis.User.logOut();
+                window.location.reload();
             })
         }
-        renderGame();
+        ethereum.selectedAddress && user ? renderGame() : '';
     } catch (error) {
-        console.log(error);
+        console.log('error');
     }
 }
 
 async function renderGame() {
+    interval();
     $('#login_button').hide();
     $('#activity_ul').html('');
 
@@ -30,14 +39,13 @@ async function renderGame() {
         let details = await contract.methods.getTokenDetails(plantId).call({from: ethereum.selectedAddress});
         renderActivity(plantId, details);
     });
-
     renderAccount();
 }
  
 async function renderAccount() {
     let contract = await getContract();
     let totalPlants = await contract.methods.balanceOf(ethereum.selectedAddress).call({from: ethereum.selectedAddress});
-    $('#total_plants').html(`You currently have ${totalPlants} plants!`)
+    $('#total_plants').html(`<h2>You currently have <span class="badge badge-success">${totalPlants}</span> plants!</h2>`)
 }
 
 function renderActivity(id, data) {
