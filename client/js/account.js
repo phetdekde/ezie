@@ -34,12 +34,11 @@ async function renderGame() {
     window.web3 = await Moralis.Web3.enable();
     let contract = await getContract();
     let array = await contract.methods.getAllTokensForUser(ethereum.selectedAddress).call({from: ethereum.selectedAddress});
-
+    renderAccount();
     for(let i=array.length-1 ; i>array.length-6 ; i--) {
         let details = await contract.methods.getTokenDetails(array[i]).call({from: ethereum.selectedAddress});
         renderActivity(array[i], details);
     }
-    renderAccount();
 }
  
 async function renderAccount() {
