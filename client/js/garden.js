@@ -83,7 +83,11 @@ function renderPlant(id, data) {
     let htmlString = ` 
     <div class="col-sm-3" style="padding-bottom:2rem; height:25rem;">
         <div class="card border-success card-detail" id="plant_${id}">
-            <div class="card-header">Id: <span class="plant_id">#${id}</span></div>
+            <div class="card-header text-center bg-success">
+                <h4 class="text-white">
+                    Id: <span class="plant_id">#${id}</span>    
+                </h4>
+            </div>
             <div class="card-img" style="height: 13rem;">
                 <img class="rounded mx-auto d-block ${data.plantType === 'Watermelon' ? 'watermelon_img' : 'plant_img'}" style="margin-top: 2.5rem;" src=${imgSrc}>
             </div>
